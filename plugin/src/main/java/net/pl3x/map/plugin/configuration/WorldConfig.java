@@ -104,12 +104,14 @@ public class WorldConfig extends AbstractWorldConfig {
     public int BACKGROUND_RENDER_MAX_CHUNKS_PER_INTERVAL = 1024;
     public int BACKGROUND_RENDER_INTERVAL_SECONDS = 15;
     public int BACKGROUND_RENDER_MAX_THREADS = -1;
+    public boolean FULLRENDER_GENERATE_CHUNKS = false;
 
     private void backgroundRenderSettings() {
         BACKGROUND_RENDER_ENABLED = getBoolean("map.background-render.enabled", BACKGROUND_RENDER_ENABLED);
         BACKGROUND_RENDER_MAX_CHUNKS_PER_INTERVAL = getInt("map.background-render.max-chunks-per-interval", BACKGROUND_RENDER_MAX_CHUNKS_PER_INTERVAL);
         BACKGROUND_RENDER_INTERVAL_SECONDS = getInt("map.background-render.interval-seconds", BACKGROUND_RENDER_INTERVAL_SECONDS);
         BACKGROUND_RENDER_MAX_THREADS = getInt("map.background-render.max-render-threads", BACKGROUND_RENDER_MAX_THREADS);
+        FULLRENDER_GENERATE_CHUNKS = getBoolean("map.fullrender-generate-new-chunks", FULLRENDER_GENERATE_CHUNKS);
     }
 
     public boolean PLAYER_TRACKER_ENABLED = true;

@@ -451,15 +451,21 @@ public abstract class AbstractRender implements Runnable {
         if (levelChunk != null) {
             levelChunk.mustNotSave = true;
         } else {
-            CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>> genFuture = chunkCache.getChunkAtAsynchronously(x, z, true, true);
-            while (!genFuture.isDone()) {
-                if (cancelled) return null;
+            if (renderCanCreateChunks()) {
+                CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>> genFuture = chunkCache.getChunkAtAsynchronously(x, z, true, true);
+                while (!genFuture.isDone()) {
+                    if (cancelled) return null;
+                }
+                Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure> genResult = future.join();
+                levelChunk = (LevelChunk) genResult.left().orElse(null);
+                Logger.debug("Chunk [" + x + "," + z + "] generated");
             }
-            Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure> genResult = future.join();
-            levelChunk = (LevelChunk) genResult.left().orElse(null);
-            Logger.debug("Chunk ["+x+","+z+"]had to be generated");
         }
         return levelChunk;
+    }
+
+    public boolean renderCanCreateChunks() {
+        return false;
     }
 
     void sleep(int ms) {

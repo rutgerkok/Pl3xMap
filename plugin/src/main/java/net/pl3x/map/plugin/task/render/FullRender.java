@@ -2,6 +2,7 @@ package net.pl3x.map.plugin.task.render;
 
 import net.kyori.adventure.text.minimessage.Template;
 import net.pl3x.map.plugin.Logger;
+import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import net.pl3x.map.plugin.data.MapWorld;
 import net.pl3x.map.plugin.data.Region;
@@ -154,5 +155,10 @@ public final class FullRender extends AbstractRender {
         }
 
         return regions;
+    }
+
+    @Override
+    public boolean renderCanCreateChunks() {
+        return mapWorld.config().FULLRENDER_GENERATE_CHUNKS;
     }
 }
