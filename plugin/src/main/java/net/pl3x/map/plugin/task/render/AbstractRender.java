@@ -26,7 +26,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.pl3x.map.api.Pair;
 import net.pl3x.map.plugin.Logger;
-import net.pl3x.map.plugin.Pl3xMapPlugin;
 import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import net.pl3x.map.plugin.data.BiomeColors;
@@ -437,6 +436,7 @@ public abstract class AbstractRender implements Runnable {
         return Colors.shade(color, colorOffset);
     }
 
+
     private net.minecraft.world.level.chunk.LevelChunk getChunkAt(ServerLevel world, int x, int z) {
         final ServerChunkCache chunkCache = world.getChunkSource();
         net.minecraft.world.level.chunk.LevelChunk ifLoaded = chunkCache.getChunkAtIfLoadedImmediately(x, z);
@@ -449,7 +449,15 @@ public abstract class AbstractRender implements Runnable {
         }
         LevelChunk levelChunk = (LevelChunk) future.join().left().orElse(null);
         if (levelChunk != null) {
-            //levelChunk.mustNotSave = true;
+            levelChunk.mustNotSave = true;
+        } else {
+            CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>> genFuture = chunkCache.getChunkAtAsynchronously(x, z, true, true);
+            while (!genFuture.isDone()) {
+                if (cancelled) return null;
+            }
+            Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure> genResult = future.join();
+            levelChunk = (LevelChunk) genResult.left().orElse(null);
+            Logger.debug("Chunk ["+x+","+z+"]had to be generated");
         }
         return levelChunk;
     }

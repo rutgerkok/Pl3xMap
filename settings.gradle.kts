@@ -1,7 +1,6 @@
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven("https://repo.pl3x.net/")
         maven("https://papermc.io/repo/repository/maven-public/")
         maven("https://repo.incendo.org/content/repositories/snapshots/")
         maven("https://repo.codemc.org/repository/maven-public/")
