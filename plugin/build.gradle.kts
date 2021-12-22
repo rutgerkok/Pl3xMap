@@ -44,6 +44,11 @@ runPaper {
     disablePluginJarDetection()
 }
 
+java {
+    targetCompatibility = JavaVersion.toVersion(17)
+    sourceCompatibility = JavaVersion.toVersion(17)
+}
+
 bukkit {
     main = "net.pl3x.map.plugin.Pl3xMapPlugin"
     name = rootProject.name

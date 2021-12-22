@@ -12,11 +12,6 @@ allprojects {
 subprojects {
     apply<JavaLibraryPlugin>()
 
-    java {
-        targetCompatibility = JavaVersion.toVersion(17)
-        sourceCompatibility = JavaVersion.toVersion(17)
-    }
-
     tasks {
         withType<JavaCompile> {
             options.encoding = Charsets.UTF_8.name()
