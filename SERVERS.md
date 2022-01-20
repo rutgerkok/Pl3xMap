@@ -18,5 +18,6 @@
 | Diamond Axe Vanilla                               | [https://davmap.commisioncorp.com/](https://davmap.commisioncorp.com/) |
 | [VestlandetMC](https://www.vestlandetmc.no/)      | [https://kart.vestlandetmc.no](https://kart.vestlandetmc.no)   |
 | [TydiumCraft](https://tydiumcraft.net/)           | [https://map.tydiumcraft.net](https://map.tydiumcraft.net)     |
+| [FreedomLand](https://fdl-mc.ru/)                 | [https://map.fdl-mc.ru](https://map.fdl-mc.ru)                 |
 
 If you'd like your server listed here, submit a PR or talk to BillyGalbreath in [Discord](https://discord.gg/B8WpDPXeBh).
