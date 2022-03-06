@@ -2,7 +2,7 @@ package net.pl3x.map.plugin.task.render;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Logger;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
 import net.pl3x.map.plugin.configuration.Lang;
@@ -59,7 +59,7 @@ public final class RadiusRender extends AbstractRender {
 
     @Override
     protected void render() {
-        Logger.info(Lang.LOG_STARTED_RADIUSRENDER, Template.of("world", world.getName()));
+        Logger.info(Lang.LOG_STARTED_RADIUSRENDER, Placeholder.unparsed("world", world.getName()));
 
         this.timer = RenderProgress.printProgress(this);
 

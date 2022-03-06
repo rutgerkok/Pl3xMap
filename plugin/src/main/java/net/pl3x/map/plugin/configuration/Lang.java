@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.pl3x.map.plugin.Logger;
 import net.pl3x.map.plugin.util.FileUtil;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -204,14 +204,14 @@ public final class Lang {
     }
 
     public static @NonNull Component parse(final @NonNull String miniMessage) {
-        return MiniMessage.get().parse(miniMessage);
+        return MiniMessage.miniMessage().deserialize(miniMessage);
     }
 
-    public static @NonNull Component parse(final @NonNull String miniMessage, final @NonNull Template @NonNull ... placeholders) {
-        return MiniMessage.get().parse(miniMessage, placeholders);
+    public static @NonNull Component parse(final @NonNull String miniMessage, final @NonNull TagResolver @NonNull ... placeholders) {
+        return MiniMessage.miniMessage().deserialize(miniMessage, placeholders);
     }
 
-    public static void send(final @NonNull Audience recipient, final @NonNull String miniMessage, final @NonNull Template @NonNull ... placeholders) {
+    public static void send(final @NonNull Audience recipient, final @NonNull String miniMessage, final @NonNull TagResolver @NonNull ... placeholders) {
         recipient.sendMessage(parse(miniMessage, placeholders));
     }
 

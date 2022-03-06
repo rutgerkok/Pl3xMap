@@ -1,8 +1,7 @@
 package net.pl3x.map.plugin.task.render;
 
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Logger;
-import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import net.pl3x.map.plugin.data.MapWorld;
 import net.pl3x.map.plugin.data.Region;
@@ -10,7 +9,6 @@ import net.pl3x.map.plugin.util.FileUtil;
 import net.pl3x.map.plugin.util.Numbers;
 import net.pl3x.map.plugin.util.iterator.RegionSpiralIterator;
 import net.pl3x.map.plugin.visibilitylimit.VisibilityLimit;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -42,7 +40,7 @@ public final class FullRender extends AbstractRender {
 
         Map<Region, Boolean> resumedMap = mapWorld.getRenderProgress();
         if (resumedMap != null) {
-            Logger.info(Lang.LOG_RESUMED_RENDERING, Template.of("world", world.getName()));
+            Logger.info(Lang.LOG_RESUMED_RENDERING, Placeholder.unparsed("world", world.getName()));
 
             regions = resumedMap;
 
@@ -50,7 +48,7 @@ public final class FullRender extends AbstractRender {
             this.curRegions.set(count);
             this.curChunks.set(countCompletedChunks(regions));
         } else {
-            Logger.info(Lang.LOG_STARTED_FULLRENDER, Template.of("world", world.getName()));
+            Logger.info(Lang.LOG_STARTED_FULLRENDER, Placeholder.unparsed("world", world.getName()));
 
             // find all region files
             Logger.info(Lang.LOG_SCANNING_REGION_FILES);
@@ -91,7 +89,7 @@ public final class FullRender extends AbstractRender {
         this.totalRegions = regions.size();
         this.totalChunks = regions.keySet().stream().mapToInt(visibility::countChunksInRegion).sum();
 
-        Logger.info(Lang.LOG_FOUND_TOTAL_REGION_FILES, Template.of("total", Integer.toString(regions.size())));
+        Logger.info(Lang.LOG_FOUND_TOTAL_REGION_FILES, Placeholder.unparsed("total", Integer.toString(regions.size())));
 
         this.timer = RenderProgress.printProgress(this);
 

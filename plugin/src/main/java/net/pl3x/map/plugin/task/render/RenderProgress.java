@@ -1,6 +1,6 @@
 package net.pl3x.map.plugin.task.render;
 
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Logger;
 import net.pl3x.map.plugin.configuration.Lang;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -75,15 +75,15 @@ public final class RenderProgress extends TimerTask {
 
         Logger.info(
                 (totalRegions > 0 ? Lang.LOG_RENDER_PROGRESS_WITH_REGIONS : Lang.LOG_RENDER_PROGRESS),
-                Template.of("world", render.world.getName()),
-                Template.of("current_regions", Integer.toString(curRegions)),
-                Template.of("total_regions", Integer.toString(totalRegions)),
-                Template.of("current_chunks", Integer.toString(curChunks)),
-                Template.of("total_chunks", Integer.toString(this.render.totalChunks())),
-                Template.of("percent", percentStr),
-                Template.of("elapsed", elapsedStr),
-                Template.of("eta", etaStr),
-                Template.of("rate", rateStr)
+                Placeholder.unparsed("world", render.world.getName()),
+                Placeholder.unparsed("current_regions", Integer.toString(curRegions)),
+                Placeholder.unparsed("total_regions", Integer.toString(totalRegions)),
+                Placeholder.unparsed("current_chunks", Integer.toString(curChunks)),
+                Placeholder.unparsed("total_chunks", Integer.toString(this.render.totalChunks())),
+                Placeholder.unparsed("percent", percentStr),
+                Placeholder.unparsed("elapsed", elapsedStr),
+                Placeholder.unparsed("eta", etaStr),
+                Placeholder.unparsed("rate", rateStr)
         );
 
     }

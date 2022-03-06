@@ -1,15 +1,7 @@
 package net.pl3x.map.plugin.task.render;
 
 import com.mojang.datafixers.util.Either;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ChunkHolder;
@@ -28,11 +20,7 @@ import net.pl3x.map.api.Pair;
 import net.pl3x.map.plugin.Logger;
 import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
-import net.pl3x.map.plugin.data.BiomeColors;
-import net.pl3x.map.plugin.data.ChunkCoordinate;
-import net.pl3x.map.plugin.data.Image;
-import net.pl3x.map.plugin.data.MapWorld;
-import net.pl3x.map.plugin.data.Region;
+import net.pl3x.map.plugin.data.*;
 import net.pl3x.map.plugin.util.Colors;
 import net.pl3x.map.plugin.util.FileUtil;
 import net.pl3x.map.plugin.util.Numbers;
@@ -41,6 +29,14 @@ import org.apache.logging.log4j.LogManager;
 import org.bukkit.World;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class AbstractRender implements Runnable {
     private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger();
@@ -105,9 +101,9 @@ public abstract class AbstractRender implements Runnable {
 
             if (finished) {
                 this.mapWorld.finishedRender();
-                Logger.info(Lang.LOG_FINISHED_RENDERING, Template.of("world", world.getName()));
+                Logger.info(Lang.LOG_FINISHED_RENDERING, Placeholder.unparsed("world", world.getName()));
             } else {
-                Logger.info(Lang.LOG_CANCELLED_RENDERING, Template.of("world", world.getName()));
+                Logger.info(Lang.LOG_CANCELLED_RENDERING, Placeholder.unparsed("world", world.getName()));
             }
         }
     }

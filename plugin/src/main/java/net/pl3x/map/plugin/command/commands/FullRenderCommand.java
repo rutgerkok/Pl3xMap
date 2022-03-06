@@ -3,7 +3,7 @@ package net.pl3x.map.plugin.command.commands;
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
 import net.pl3x.map.plugin.command.CommandManager;
 import net.pl3x.map.plugin.command.Pl3xMapCommand;
@@ -27,7 +27,7 @@ public final class FullRenderCommand extends Pl3xMapCommand {
         this.commandManager.registerSubcommand(builder ->
                 builder.literal("fullrender")
                         .argument(MapWorldArgument.optional("world"), CommandUtil.description(Lang.OPTIONAL_WORLD_ARGUMENT_DESCRIPTION))
-                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.get().parse(Lang.FULLRENDER_COMMAND_DESCRIPTION))
+                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.miniMessage().deserialize(Lang.FULLRENDER_COMMAND_DESCRIPTION))
                         .permission("pl3xmap.command.fullrender")
                         .handler(this::executeFullRender));
     }
@@ -36,12 +36,12 @@ public final class FullRenderCommand extends Pl3xMapCommand {
         final CommandSender sender = context.getSender();
         final MapWorld world = CommandUtil.resolveWorld(context);
         if (world.isRendering()) {
-            Lang.send(sender, Lang.RENDER_IN_PROGRESS, Template.of("world", world.name()));
+            Lang.send(sender, Lang.RENDER_IN_PROGRESS, Placeholder.unparsed("world", world.name()));
             return;
         }
 
         if (sender instanceof Player) {
-            Lang.send(sender, Lang.LOG_STARTED_FULLRENDER, Template.of("world", world.name()));
+            Lang.send(sender, Lang.LOG_STARTED_FULLRENDER, Placeholder.unparsed("world", world.name()));
         }
         world.startRender(new FullRender(world));
     }

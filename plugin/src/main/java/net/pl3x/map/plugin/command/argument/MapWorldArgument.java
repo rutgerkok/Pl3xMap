@@ -167,9 +167,9 @@ public class MapWorldArgument<C> extends CommandArgument<C, MapWorld> {
         public @NonNull String getMessage() {
             switch (this.reason) {
                 case NO_SUCH_WORLD:
-                    return MiniMessage.get().stripTokens(Lang.NO_SUCH_WORLD.replace("<world>", this.input));
+                    return MiniMessage.miniMessage().stripTags(Lang.NO_SUCH_WORLD.replace("<world>", this.input));
                 case MAP_NOT_ENABLED:
-                    return MiniMessage.get().stripTokens(Lang.MAP_NOT_ENABLED_FOR_WORLD.replace("<world>", this.input));
+                    return MiniMessage.miniMessage().stripTags(Lang.MAP_NOT_ENABLED_FOR_WORLD.replace("<world>", this.input));
                 default:
                     throw new IllegalArgumentException("Unknown MapWorld argument parse failure reason");
             }

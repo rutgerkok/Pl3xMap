@@ -2,6 +2,8 @@ package net.pl3x.map.plugin;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import org.bukkit.Bukkit;
@@ -36,8 +38,8 @@ public class Logger {
         log().log(Level.SEVERE, msg, t);
     }
 
-    public static void info(final @NonNull String miniMessage, final @NonNull Template @NonNull ... placeholders) {
-        Bukkit.getConsoleSender().sendMessage(MiniMessage.get().parse(
+    public static void info(final @NonNull String miniMessage, final @NonNull TagResolver @NonNull ... placeholders) {
+        Bukkit.getConsoleSender().sendMessage(MiniMessage.miniMessage().deserialize(
                 Lang.LOGGER_PREFIX + " " + miniMessage,
                 placeholders
         ));
