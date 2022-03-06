@@ -3,7 +3,7 @@ package net.pl3x.map.plugin.command.commands;
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
 import net.pl3x.map.plugin.command.CommandManager;
 import net.pl3x.map.plugin.command.Pl3xMapCommand;
@@ -25,7 +25,7 @@ public final class ReloadCommand extends Pl3xMapCommand {
     public void register() {
         this.commandManager.registerSubcommand(builder ->
                 builder.literal("reload")
-                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.get().parse(Lang.RELOAD_COMMAND_DESCRIPTION))
+                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.miniMessage().deserialize(Lang.RELOAD_COMMAND_DESCRIPTION))
                         .permission("pl3xmap.command.reload")
                         .handler(this::execute));
     }
@@ -43,8 +43,8 @@ public final class ReloadCommand extends Pl3xMapCommand {
 
         PluginDescriptionFile desc = plugin.getDescription();
         Lang.send(sender, Lang.PLUGIN_RELOADED,
-                Template.of("name", desc.getName()),
-                Template.of("version", desc.getVersion())
+                Placeholder.unparsed("name", desc.getName()),
+                Placeholder.unparsed("version", desc.getVersion())
         );
     }
 }

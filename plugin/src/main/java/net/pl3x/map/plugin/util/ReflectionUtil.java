@@ -1,16 +1,17 @@
 package net.pl3x.map.plugin.util;
 
+import net.minecraft.server.level.ServerLevel;
+import org.bukkit.World;
+import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
-import net.minecraft.server.level.ServerLevel;
-import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 public final class ReflectionUtil {
     private ReflectionUtil() {
@@ -77,7 +78,7 @@ public final class ReflectionUtil {
         }
 
         public static @NonNull ServerLevel serverLevel(final @NonNull World world) {
-            return ((CraftWorld)world).getHandle();
+            return ((CraftWorld) world).getHandle();
         }
     }
 }

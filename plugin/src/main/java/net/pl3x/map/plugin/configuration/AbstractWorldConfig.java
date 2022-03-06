@@ -1,12 +1,13 @@
 package net.pl3x.map.plugin.configuration;
 
-import java.util.List;
-import java.util.Map;
 import net.minecraft.server.level.ServerLevel;
 import net.pl3x.map.plugin.util.ReflectionUtil;
 import org.bukkit.World;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
+
+import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 abstract class AbstractWorldConfig {

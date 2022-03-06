@@ -53,7 +53,7 @@ public class IntegratedServer {
                     .setHandler(exchange -> {
                         if (exchange.getRelativePath().startsWith("/tiles")) {
                             exchange.getResponseHeaders().put(Headers.CACHE_CONTROL,
-                                                              "max-age=0, must-revalidate, no-cache");
+                                    "max-age=0, must-revalidate, no-cache");
                         }
                         resourceHandler.handleRequest(exchange);
                     })

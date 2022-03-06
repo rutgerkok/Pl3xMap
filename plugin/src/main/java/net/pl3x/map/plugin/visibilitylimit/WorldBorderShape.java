@@ -2,14 +2,12 @@ package net.pl3x.map.plugin.visibilitylimit;
 
 import net.pl3x.map.api.visibilitylimit.VisibilityShape;
 import net.pl3x.map.plugin.util.Numbers;
-
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
 
 /**
  * A visibility limit that follows the world border.
- *
  */
 public class WorldBorderShape implements VisibilityShape {
 

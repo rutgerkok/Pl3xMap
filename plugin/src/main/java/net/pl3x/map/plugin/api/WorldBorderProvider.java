@@ -13,7 +13,7 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Collection;
 import java.util.Collections;
 

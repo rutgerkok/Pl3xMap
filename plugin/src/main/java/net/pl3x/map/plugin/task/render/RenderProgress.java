@@ -6,11 +6,7 @@ import net.pl3x.map.plugin.configuration.Lang;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public final class RenderProgress extends TimerTask {

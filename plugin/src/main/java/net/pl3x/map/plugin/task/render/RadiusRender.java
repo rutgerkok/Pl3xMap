@@ -12,7 +12,6 @@ import net.pl3x.map.plugin.data.Region;
 import net.pl3x.map.plugin.util.Numbers;
 import net.pl3x.map.plugin.util.iterator.ChunkSpiralIterator;
 import net.pl3x.map.plugin.visibilitylimit.VisibilityLimit;
-
 import org.bukkit.Location;
 import org.checkerframework.checker.nullness.qual.NonNull;
 

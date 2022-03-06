@@ -4,7 +4,6 @@ import net.pl3x.map.api.visibilitylimit.VisibilityShape;
 import net.pl3x.map.plugin.data.ChunkCoordinate;
 import net.pl3x.map.plugin.data.Region;
 import net.pl3x.map.plugin.util.Numbers;
-
 import org.bukkit.World;
 import org.bukkit.util.BlockVector;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -16,7 +15,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Decides what blocks, chunks and regions are visible on the map. Even if a
  * chunk exists outside of this limit, it is not displayed.
- *
  */
 public final class VisibilityLimit implements net.pl3x.map.api.visibilitylimit.VisibilityLimit {
 
@@ -31,11 +29,10 @@ public final class VisibilityLimit implements net.pl3x.map.api.visibilitylimit.V
     /**
      * Counts the amount of chunks in the region for which
      * {@link #shouldRenderChunk(int, int)} returns {@code true}.
-     * 
-     * @param region
-     *            The region.
+     *
+     * @param region The region.
      * @return The amount of chunks, from 0 to {@value #REGION_SIZE_CHUNKS} *
-     *         {@value #REGION_SIZE_CHUNKS}.
+     * {@value #REGION_SIZE_CHUNKS}.
      */
     public int countChunksInRegion(Region region) {
         switch (this.shapes.size()) {
@@ -60,7 +57,7 @@ public final class VisibilityLimit implements net.pl3x.map.api.visibilitylimit.V
                 return count;
         }
     }
-    
+
     @Override
     public @NonNull List<VisibilityShape> getShapes() {
         return this.shapes;
@@ -166,7 +163,6 @@ public final class VisibilityLimit implements net.pl3x.map.api.visibilitylimit.V
     public boolean shouldRenderRegion(Region region) {
         return shouldRenderRegion(region.getX(), region.getZ());
     }
-
 
 
 }

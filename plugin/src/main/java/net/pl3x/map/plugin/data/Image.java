@@ -1,19 +1,18 @@
 package net.pl3x.map.plugin.data;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import javax.imageio.*;
-import javax.imageio.stream.ImageOutputStream;
-
 import net.minecraft.util.Mth;
 import net.pl3x.map.plugin.Logger;
 import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
+
+import javax.imageio.*;
+import javax.imageio.stream.ImageOutputStream;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Image {
     public static final int SIZE = 512;

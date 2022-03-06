@@ -19,7 +19,6 @@ import net.pl3x.map.plugin.command.exception.CompletedSuccessfullyException;
 import net.pl3x.map.plugin.command.exception.ConsoleMustProvideWorldException;
 import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -70,8 +69,8 @@ public final class CommandManager extends PaperCommandManager<CommandSender> {
         new MinecraftExceptionHandler<CommandSender>()
                 .withDefaultHandlers()
                 .withDecorator(component -> Component.text()
-                        .append(MiniMessage.get().parse(Lang.COMMAND_PREFIX)
-                                .hoverEvent(MiniMessage.get().parse(Lang.CLICK_FOR_HELP))
+                        .append(MiniMessage.miniMessage().deserialize(Lang.COMMAND_PREFIX)
+                                .hoverEvent(MiniMessage.miniMessage().deserialize(Lang.CLICK_FOR_HELP))
                                 .clickEvent(ClickEvent.runCommand(String.format("/%s help", Config.MAIN_COMMAND_LABEL))))
                         .append(component)
                         .build())

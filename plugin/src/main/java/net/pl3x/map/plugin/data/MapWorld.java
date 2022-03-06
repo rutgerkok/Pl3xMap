@@ -5,19 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.*;
-
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.pl3x.map.api.LayerProvider;
@@ -37,6 +24,13 @@ import net.pl3x.map.plugin.util.Colors;
 import net.pl3x.map.plugin.util.ReflectionUtil;
 import net.pl3x.map.plugin.visibilitylimit.VisibilityLimit;
 import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.concurrent.*;
 
 public final class MapWorld implements net.pl3x.map.api.MapWorld {
     private static final String dirtyChunksFileName = "dirty_chunks.json";

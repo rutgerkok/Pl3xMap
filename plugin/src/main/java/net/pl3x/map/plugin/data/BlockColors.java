@@ -1,8 +1,6 @@
 package net.pl3x.map.plugin.data;
 
 import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Function;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
@@ -10,6 +8,9 @@ import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.pl3x.map.plugin.util.Colors;
 import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.util.Map;
+import java.util.function.Function;
 
 public final class BlockColors {
     private final Map<Block, Integer> staticColorMap;

@@ -2,7 +2,6 @@ package net.pl3x.map.plugin.task;
 
 import com.google.gson.Gson;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
-import net.pl3x.map.plugin.api.PlayerManager;
 import net.pl3x.map.plugin.configuration.WorldConfig;
 import net.pl3x.map.plugin.util.FileUtil;
 import org.bukkit.Bukkit;

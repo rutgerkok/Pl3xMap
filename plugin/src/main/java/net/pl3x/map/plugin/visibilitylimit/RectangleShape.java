@@ -2,14 +2,12 @@ package net.pl3x.map.plugin.visibilitylimit;
 
 import net.pl3x.map.api.visibilitylimit.VisibilityShape;
 import net.pl3x.map.plugin.util.Numbers;
-
 import org.bukkit.World;
 import org.bukkit.util.BlockVector;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * Limits map drawing to a rectangular region.
- *
  */
 final class RectangleShape implements VisibilityShape {
 
@@ -30,13 +28,10 @@ final class RectangleShape implements VisibilityShape {
 
     /**
      * Sets the minimum and maximum locations displayed on the map.
-     * 
-     * @param min
-     *            Minimum location, inclusive.
-     * @param max
-     *            Maximum location, also inclusive.
-     * @throws IllegalArgumentException
-     *             If min > max.
+     *
+     * @param min Minimum location, inclusive.
+     * @param max Maximum location, also inclusive.
+     * @throws IllegalArgumentException If min > max.
      */
     RectangleShape(@NonNull BlockVector min, @NonNull BlockVector max) throws IllegalArgumentException {
         if (min.getBlockX() > max.getBlockX() || min.getBlockZ() > max.getBlockZ()) {

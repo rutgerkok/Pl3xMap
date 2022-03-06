@@ -2,12 +2,10 @@ package net.pl3x.map.plugin.visibilitylimit;
 
 import net.pl3x.map.api.visibilitylimit.VisibilityShape;
 import net.pl3x.map.plugin.util.Numbers;
-
 import org.bukkit.World;
 
 /**
  * Limits map drawing to a circular region.
- *
  */
 final class CircleShape implements VisibilityShape {
 

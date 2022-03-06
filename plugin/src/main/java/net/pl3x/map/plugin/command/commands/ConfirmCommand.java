@@ -2,7 +2,6 @@ package net.pl3x.map.plugin.command.commands;
 
 import cloud.commandframework.extra.confirmation.CommandConfirmationManager;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
-import java.util.concurrent.TimeUnit;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -14,6 +13,8 @@ import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import org.bukkit.command.CommandSender;
 import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.util.concurrent.TimeUnit;
 
 import static net.kyori.adventure.text.Component.text;
 

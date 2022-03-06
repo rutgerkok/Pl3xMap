@@ -4,7 +4,7 @@ import cloud.commandframework.bukkit.parsers.selector.SinglePlayerSelectorArgume
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
 import net.pl3x.map.plugin.command.CommandManager;
 import net.pl3x.map.plugin.command.Pl3xMapCommand;
@@ -24,13 +24,13 @@ public final class HideCommand extends Pl3xMapCommand {
     public void register() {
         this.commandManager.registerSubcommand(builder ->
                 builder.literal("hide")
-                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.get().parse(Lang.HIDE_COMMAND_DESCRIPTION))
+                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.miniMessage().deserialize(Lang.HIDE_COMMAND_DESCRIPTION))
                         .permission("pl3xmap.command.hide")
                         .handler(this::executeHide));
         this.commandManager.registerSubcommand(builder ->
                 builder.literal("hide")
                         .argument(SinglePlayerSelectorArgument.optional("player"), CommandUtil.description(Lang.OPTIONAL_PLAYER_ARGUMENT_DESCRIPTION))
-                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.get().parse(Lang.HIDE_COMMAND_DESCRIPTION))
+                        .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.miniMessage().deserialize(Lang.HIDE_COMMAND_DESCRIPTION))
                         .permission("pl3xmap.command.hide.others")
                         .handler(this::executeHide));
     }
@@ -39,12 +39,12 @@ public final class HideCommand extends Pl3xMapCommand {
         final Player target = CommandUtil.resolvePlayer(context);
         final CommandSender sender = context.getSender();
         if (this.plugin.playerManager().hidden(target)) {
-            Lang.send(sender, Lang.PLAYER_ALREADY_HIDDEN, Template.of("player", target.getName()));
+            Lang.send(sender, Lang.PLAYER_ALREADY_HIDDEN, Placeholder.unparsed("player", target.getName()));
             return;
         }
 
         this.plugin.playerManager().hide(target, true);
-        Lang.send(sender, Lang.PLAYER_HIDDEN, Template.of("player", target.getName()));
+        Lang.send(sender, Lang.PLAYER_HIDDEN, Placeholder.unparsed("player", target.getName()));
     }
 
 }
