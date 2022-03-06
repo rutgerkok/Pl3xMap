@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -204,7 +205,7 @@ public final class BiomeColors {
         long xz = (long) pos.getX() << 32 | pos.getZ() & 0xffffffffL;
         Biome biome = blockPosBiomeCache.getIfPresent(xz);
         if (biome == null) {
-            biome = world.nms().getBiome(pos);
+            biome = world.nms().getBiome(pos).value();
             blockPosBiomeCache.put(xz, biome);
         }
         return biome;
