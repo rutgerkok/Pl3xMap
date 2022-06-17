@@ -9,7 +9,7 @@ import net.pl3x.map.plugin.data.MapWorld;
 import net.pl3x.map.plugin.listener.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_18_R2.map.CraftMapRenderer;
+import org.bukkit.craftbukkit.v1_19_R1.map.CraftMapRenderer;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;

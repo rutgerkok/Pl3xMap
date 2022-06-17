@@ -7,13 +7,13 @@ plugins {
 
 dependencies {
     implementation(project(":pl3xmap-api"))
-    val cloudVersion = "1.6.2"
+    val cloudVersion = "1.7.0-SNAPSHOT"
     implementation("cloud.commandframework", "cloud-paper", cloudVersion)
     implementation("cloud.commandframework", "cloud-minecraft-extras", cloudVersion)
-    implementation("net.kyori", "adventure-text-minimessage", "4.10.0")
+    implementation("net.kyori", "adventure-text-minimessage", "4.11.0")
     implementation("io.undertow", "undertow-core", "2.2.3.Final")
     implementation("org.bstats", "bstats-bukkit", "2.2.1")
-    paperDevBundle("1.18.2-R0.1-SNAPSHOT")
+    paperDevBundle("1.19-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -36,7 +36,7 @@ tasks {
         dependsOn(reobfJar)
     }
     runServer {
-        minecraftVersion("1.18.1")
+        minecraftVersion("1.19")
     }
 }
 
@@ -52,7 +52,7 @@ java {
 bukkit {
     main = "net.pl3x.map.plugin.Pl3xMapPlugin"
     name = rootProject.name
-    apiVersion = "1.18"
+    apiVersion = "1.19"
     website = "https://github.com/NeumimTo/Pl3xMap"
     authors = listOf("BillyGalbreath", "jmp", "NeumimTo")
 }
