@@ -4,8 +4,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
@@ -212,7 +212,7 @@ public final class BiomeColors {
     }
 
     public static Registry<Biome> getBiomeRegistry(ServerLevel world) {
-        return world.registryAccess().ownedRegistryOrThrow(Registry.BIOME_REGISTRY);
+        return world.registryAccess().registryOrThrow(Registries.BIOME);
     }
 
     private static int modifiedGrassColor(final @NonNull Biome biome, final @NonNull BlockPos pos, final int color) {

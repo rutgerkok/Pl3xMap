@@ -36,7 +36,7 @@ public final class CommandManager extends PaperCommandManager<CommandSender> {
                 UnaryOperator.identity()
         );
 
-        if (this.queryCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
+        if (this.hasCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
             this.registerBrigadier();
             final CloudBrigadierManager<?, ?> brigManager = this.brigadierManager();
             if (brigManager != null) {
@@ -44,7 +44,7 @@ public final class CommandManager extends PaperCommandManager<CommandSender> {
             }
         }
 
-        if (this.queryCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION)) {
+        if (this.hasCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION)) {
             this.registerAsynchronousCompletions();
         }
 

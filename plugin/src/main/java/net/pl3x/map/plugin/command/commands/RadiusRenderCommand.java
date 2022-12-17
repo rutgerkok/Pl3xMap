@@ -29,7 +29,7 @@ public final class RadiusRenderCommand extends Pl3xMapCommand {
         this.commandManager.registerSubcommand(builder ->
                 builder.literal("radiusrender")
                         .argument(MapWorldArgument.of("world"))
-                        .argument(IntegerArgument.<CommandSender>newBuilder("radius").withMin(1).build())
+                        .argument(IntegerArgument.<CommandSender>builder("radius").withMin(1).build())
                         .argument(Location2DArgument.optional("center"), CommandUtil.description(Lang.OPTIONAL_CENTER_ARGUMENT_DESCRIPTION))
                         .meta(MinecraftExtrasMetaKeys.DESCRIPTION, MiniMessage.miniMessage().deserialize(Lang.RADIUSRENDER_COMMAND_DESCRIPTION))
                         .permission("pl3xmap.command.radiusrender")

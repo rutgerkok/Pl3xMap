@@ -1,6 +1,8 @@
 package net.pl3x.map.plugin.configuration;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -49,7 +51,7 @@ public class WorldAdvanced extends AbstractWorldConfig {
                 "minecraft:fern",
                 "minecraft:grass",
                 "minecraft:large_fern"
-        )).forEach(block -> invisibleBlocks.add(Registry.BLOCK.get(new ResourceLocation(block.toString()))));
+        )).forEach(block -> invisibleBlocks.add(BuiltInRegistries.BLOCK.get(new ResourceLocation(block.toString()))));
     }
 
     public final Set<Block> iterateUpBaseBlocks = new HashSet<>();
@@ -69,7 +71,7 @@ public class WorldAdvanced extends AbstractWorldConfig {
                 "minecraft:nether_quartz_ore",
                 "minecraft:magma_block",
                 "minecraft:basalt"
-        )).forEach(block -> iterateUpBaseBlocks.add(Registry.BLOCK.get(new ResourceLocation(block.toString()))));
+        )).forEach(block -> iterateUpBaseBlocks.add(BuiltInRegistries.BLOCK.get(new ResourceLocation(block.toString()))));
     }
 
     public final Map<Biome, Integer> COLOR_OVERRIDES_BIOME_FOLIAGE = new HashMap<>();
@@ -153,7 +155,7 @@ public class WorldAdvanced extends AbstractWorldConfig {
                 Map.entry("minecraft:lava", "#EA5C0F"),
                 Map.entry("minecraft:glass", "#FFFFFF")
         )).forEach((key, color) -> {
-            final Block block = Registry.BLOCK.get(new ResourceLocation(key));
+            final Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation(key));
             if (block != Blocks.AIR) {
                 COLOR_OVERRIDES_BLOCKS.put(block, Colors.parseHex(color));
             }
