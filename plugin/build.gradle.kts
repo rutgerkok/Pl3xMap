@@ -10,7 +10,7 @@ dependencies {
     val cloudVersion = "1.8.0"
     implementation("cloud.commandframework", "cloud-paper", cloudVersion)
     implementation("cloud.commandframework", "cloud-minecraft-extras", cloudVersion)
-    implementation("net.kyori", "adventure-text-minimessage", "4.11.0")
+    implementation("net.kyori", "adventure-text-minimessage", "4.12.0")
     implementation("io.undertow", "undertow-core", "2.2.3.Final")
     implementation("org.bstats", "bstats-bukkit", "2.2.1")
     paperDevBundle("1.19.3-R0.1-SNAPSHOT")
