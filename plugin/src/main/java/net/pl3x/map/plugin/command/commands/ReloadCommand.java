@@ -2,6 +2,7 @@ package net.pl3x.map.plugin.command.commands;
 
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.minecraft.extras.MinecraftExtrasMetaKeys;
+import io.papermc.paper.plugin.configuration.PluginMeta;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.pl3x.map.plugin.Pl3xMapPlugin;
@@ -12,7 +13,6 @@ import net.pl3x.map.plugin.configuration.Config;
 import net.pl3x.map.plugin.configuration.Lang;
 import net.pl3x.map.plugin.util.FileUtil;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public final class ReloadCommand extends Pl3xMapCommand {
@@ -41,7 +41,7 @@ public final class ReloadCommand extends Pl3xMapCommand {
 
         plugin.start();
 
-        PluginDescriptionFile desc = plugin.getDescription();
+        PluginMeta desc = plugin.getPluginMeta();
         Lang.send(sender, Lang.PLUGIN_RELOADED,
                 Placeholder.unparsed("name", desc.getName()),
                 Placeholder.unparsed("version", desc.getVersion())

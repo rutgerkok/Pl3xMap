@@ -97,7 +97,7 @@ public final class BiomeColors {
         final Registry<Biome> biomeRegistry = getBiomeRegistry(world.nms());
         for (final Biome biome : biomeRegistry) {
             float temperature = Mth.clamp(biome.getBaseTemperature(), 0.0F, 1.0F);
-            float humidity = Mth.clamp(biome.getDownfall(), 0.0F, 1.0F);
+            float humidity = Mth.clamp(biome.climateSettings.downfall(), 0.0F, 1.0F);
             grassColors.put(biome, BiomeEffectsReflection.grassColor(biome)
                     .orElse(getDefaultGrassColor(temperature, humidity)));
             foliageColors.put(biome, BiomeEffectsReflection.foliageColor(biome)

@@ -10,7 +10,6 @@ import java.io.*;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
@@ -25,8 +24,6 @@ public class FileUtil {
     public static Path TILES_DIR = WEB_DIR.resolve("tiles");
     public static final Map<UUID, Path> WORLD_DIRS = new HashMap<>();
     public static final Map<UUID, Path> REGION_DIRS = new HashMap<>();
-
-    private static FileSystem fileSystem;
 
     public static void reload() {
         PLUGIN_DIR = Pl3xMapPlugin.getInstance().getDataFolder().toPath();

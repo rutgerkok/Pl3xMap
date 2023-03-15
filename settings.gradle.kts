@@ -1,10 +1,10 @@
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://repo.papermc.io/repository/maven-public/")
         maven("https://repo.incendo.org/content/repositories/snapshots/")
         maven("https://repo.codemc.org/repository/maven-public/")
-        maven("https://papermc.io/repo/repository/maven-snapshots/")
+        maven("https://repo.papermc.io/repository/maven-snapshots/")
         mavenLocal()
     }
 }
@@ -12,8 +12,8 @@ dependencyResolutionManagement {
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        maven( "https://papermc.io/repo/repository/maven-public/")
-        maven("https://papermc.io/repo/repository/maven-snapshots/")
+        maven("https://repo.papermc.io/repository/maven-public/")
+        maven("https://repo.papermc.io/repository/maven-snapshots/")
     }
 }
 
